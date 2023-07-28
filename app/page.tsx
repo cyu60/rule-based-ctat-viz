@@ -348,6 +348,7 @@ export default function Home() {
                 <CardDescription>Trace the program line</CardDescription>
               </CardHeader>
               <CardContent className="">
+                {/* <div className="grid grid-cols-1"> */}
                 <p className="font-bold h-10 p-4 items-center flex">
                   {rules[currentRuleIndex].label}
                 </p>
@@ -367,7 +368,7 @@ export default function Home() {
                           : "bg-indigo-200 h-10 p-4 flex items-center flex-grow"
                       }
                     >
-                      <p className="w-96">{c.label}</p>
+                      <p className="flex-grow">{c.label}</p>
                       {phase === "Match" && index <= currentLineIndex ? (
                         c.code() ? (
                           <CheckCircle color="green" className="" />
@@ -392,13 +393,14 @@ export default function Home() {
                           : "bg-slate-200 h-10 p-4 flex items-center flex-grow"
                       }
                     >
-                      <p className="w-96">{c.label}</p>
+                      <p className="flex-grow">{c.label}</p>
                       {phase === "Action" && index <= currentLineIndex ? (
                         <CheckCircle color="green" className="" />
                       ) : null}
                     </div>
                   </div>
                 ))}
+                {/* </div> */}
               </CardContent>
             </Card>
           </div>
@@ -437,10 +439,14 @@ export default function Home() {
                   </AccordionTrigger>
                   <AccordionContent>
                     {rule.condition.map((c, idx) => (
-                      <p key={idx} className="ml-16">{c.label}</p>
+                      <p key={idx} className="ml-16">
+                        {c.label}
+                      </p>
                     ))}
                     {rule.action.map((a, idx) => (
-                      <p key={idx} className="ml-16">{a.label}</p>
+                      <p key={idx} className="ml-16">
+                        {a.label}
+                      </p>
                     ))}
                   </AccordionContent>
                 </AccordionItem>
